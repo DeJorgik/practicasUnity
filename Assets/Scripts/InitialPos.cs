@@ -12,9 +12,7 @@ public class InitialPos : MonoBehaviour
         playerObjec.transform.position = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void respawn() {
+        playerObjec.transform.position = transform.position + new Vector3(0,1,0);
     }
 }
