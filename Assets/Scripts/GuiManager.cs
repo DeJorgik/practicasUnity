@@ -15,26 +15,12 @@ public class GuiManager : MonoBehaviour {
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Lo mantiene entre escenas
     }
 
 
     [SerializeField] private GameOverGui gameOverGui;
     [SerializeField] private LifeHud lifeHud;
     
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void hideGameOver() {
         gameOverGui.deactivate();
@@ -52,6 +38,10 @@ public class GuiManager : MonoBehaviour {
 
     public bool updateLife() {
         return lifeHud.decreaseLifeCounter();
+    }
+
+    public void resetHud() {
+        lifeHud.resetLifeHud();
     }
     
     

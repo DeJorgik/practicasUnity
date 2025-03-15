@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class playerScript : MonoBehaviour {
@@ -16,5 +13,9 @@ public class playerScript : MonoBehaviour {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    }
+
+    public void respawnAt(Vector3 position) {
+        transform.position = position;
     }
 }

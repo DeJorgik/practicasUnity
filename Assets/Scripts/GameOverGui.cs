@@ -6,12 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverGui : MonoBehaviour {
-    private TMP_Text message;
+    [SerializeField] private TMP_Text message;
     
-    private void Start() {
-        
-    }
-
     public void activate() {
         gameObject.SetActive(true);
     }
