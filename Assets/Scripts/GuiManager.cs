@@ -17,9 +17,21 @@ public class GuiManager : MonoBehaviour {
         Instance = this;
     }
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameOverObject);
+        DontDestroyOnLoad(lifeHudObject);
 
-    [SerializeField] private GameOverGui gameOverGui;
-    [SerializeField] private LifeHud lifeHud;
+        gameOverGui = gameOverObject.GetComponent<GameOverGui>();
+        lifeHud = lifeHudObject.GetComponent<LifeHud>();
+    }
+
+
+    [SerializeField] private GameObject gameOverObject;
+    [SerializeField] private GameObject lifeHudObject;
+    
+    private GameOverGui gameOverGui;
+    private LifeHud lifeHud;
     
 
     public void hideGameOver() {

@@ -8,8 +8,17 @@ public class EventManager : MonoBehaviour {
     public static event Action OnPlayerdeath;
     public static event Action<GameConstants.gameResult> OnPlayerOutcome;
 
+    public static event Action loadScene; 
+
     public static event Action<Vector3> OnPlayerRespawn;
 
+
+    public void TriggerLoadScene()
+    {
+        if (loadScene != null) {
+            loadScene.Invoke();
+        }
+    }
 
     public static void TriggerPlayerDeath() {
         if (OnPlayerdeath != null) {

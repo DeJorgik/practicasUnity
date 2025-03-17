@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour {
 
     private GameObject playerInstance;
     private playerScript player;
+    private GameObject respawn;
 
     private bool isGuiOn;
+    
 
     public static GameManager Instance { get; private set; }
 
@@ -25,21 +27,27 @@ public class GameManager : MonoBehaviour {
         }
 
         Instance = this;
+        
+        DontDestroyOnLoad(playerPrefab); // Nos quedamos con el prefab del jugador, para el resto
     }
 
 
     // Start is called before the first frame update
     void Start() {
         isGuiOn = false;
-
+        
         // Nos suscribimos a los eventos
         EventManager.OnPlayerOutcome += playerOutcome;
         EventManager.OnPlayerdeath += updateLife;
         EventManager.OnPlayerRespawn += respawnPlayer;
+        
+        // Escenas
+
+        SceneManager.sceneLoaded += OnLoadedScene;
 
 
         if (playerInstance == null) {
-            playerInstance = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            playerInstance = Instantiate(playerPrefab, new Vector3(10,10,10), Quaternion.identity);
         }
 
         if (playerInstance != null && player == null) {
@@ -50,6 +58,20 @@ public class GameManager : MonoBehaviour {
         GuiManager.Instance.hideGameOver();
     }
 
+    private void loadNextScene() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
+    private void OnLoadedScene(Scene scene , LoadSceneMode mode) {
+        // Reseteamos cosas de la interfaz
+        isGuiOn = false;
+        GuiManager.Instance.hideGameOver();
+        
+        if (respawn == null) {
+            respawn = GameObject.FindGameObjectWithTag("RespawnZone"); // Pillamos el spawn
+        }
+    }
     private void OnDisable() {
         EventManager.OnPlayerOutcome -= playerOutcome;
         EventManager.OnPlayerdeath -= updateLife;
@@ -97,11 +119,17 @@ public class GameManager : MonoBehaviour {
     private void playerOutcome(GameConstants.gameResult result) {
         isGuiOn = true;
         GuiManager.Instance.popGameOver(result);
+
+        if (result == GameConstants.gameResult.Victory) {
+            loadNextScene();
+        }
     }
 
     public void respawnPlayer(Vector3 spawnPosition) {
         if (player != null) {
             player.respawnAt(spawnPosition);
+            
+            Debug.Log("Se spawnea en el " + spawnPosition);
         }
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine;
 public class InitialPos : MonoBehaviour {
     private Vector3 spawnPosition;
     
-    void Start() {
+    void Awake() {
         spawnPosition = transform.position + new Vector3(0,2,0);
     }
 
     public void respawn() {
         EventManager.TriggerPlayerRespawn(spawnPosition);
+        Debug.Log("Se ha spawneado en el " + spawnPosition);
     }
 }
