@@ -18,9 +18,10 @@ public class KillPlane : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(0);
+            EventManager.TriggerPlayerDeath();
+            // SceneManager.LoadScene(0);
         }
         //ganar partida
    

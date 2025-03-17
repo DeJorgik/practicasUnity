@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitialPos : MonoBehaviour
-{
-    public GameObject playerObjec;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerObjec.transform.position = transform.position;
+public class InitialPos : MonoBehaviour {
+    private Vector3 spawnPosition;
+    
+    void Start() {
+        spawnPosition = transform.position + new Vector3(0,2,0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void respawn() {
+        EventManager.TriggerPlayerRespawn(spawnPosition);
     }
 }

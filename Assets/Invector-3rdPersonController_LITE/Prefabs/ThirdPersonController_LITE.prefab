@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 4425428723088313502}
   - component: {fileID: 4425428723088313497}
   - component: {fileID: 4425428723088313496}
+  - component: {fileID: -1380704217998257242}
   m_Layer: 0
   m_Name: ThirdPersonController_LITE
   m_TagString: Player
@@ -357,9 +358,9 @@ MonoBehaviour:
     rotationSpeed: 16
     walkByDefault: 0
     rotateWithCamera: 0
-    walkSpeed: 2
-    runningSpeed: 4
-    sprintSpeed: 6
+    walkSpeed: 10
+    runningSpeed: 10
+    sprintSpeed: 10
   strafeSpeed:
     movementSmooth: 6
     animationSmooth: 0.2
@@ -372,10 +373,10 @@ MonoBehaviour:
   jumpWithRigidbodyForce: 0
   jumpAndRotate: 1
   jumpTimer: 0.3
-  jumpHeight: 4
-  airSpeed: 5
+  jumpHeight: 8
+  airSpeed: 10
   airSmooth: 6
-  extraGravity: -10
+  extraGravity: -5
   limitFallVelocity: -15
   groundLayer:
     serializedVersion: 2
@@ -455,6 +456,18 @@ CapsuleCollider:
   m_Height: 2.0406253
   m_Direction: 1
   m_Center: {x: 0, y: 0.8796872, z: 0}
+--- !u!114 &-1380704217998257242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425428723088313499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34739f573b7d8bd4cb58f62ee67eff18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4425428723094576442
 GameObject:
   m_ObjectHideFlags: 0
