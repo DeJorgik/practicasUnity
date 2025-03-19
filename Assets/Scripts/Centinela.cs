@@ -44,8 +44,11 @@ public class Centinela : GenerarObstaculos
     {
         if (other.tag == "Player")
         {
+            //Sonido de alarma
             audioSource.clip = alarmSound;
             audioSource.Play();
+            //Resetear timer
+            timer = timeBetweenSpawns;
             playerVisible = true;
             player = other.gameObject;
         }
