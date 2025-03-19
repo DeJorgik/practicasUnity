@@ -12,11 +12,14 @@ public class Centinela : GenerarObstaculos
     private GameObject player;
     public GameObject spawnPos;
 
+    public AudioClip shootSound;
+    public AudioClip alarmSound;
+
     void Start()
     {
         playerVisible = false;
         timer = timeBetweenSpawns;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,6 +32,8 @@ public class Centinela : GenerarObstaculos
 
             if (timer <= 0f)
             {
+                audioSource.clip = shootSound;
+                audioSource.Play();
                 SpawnObject();
                 timer = timeBetweenSpawns;
             }
@@ -39,6 +44,8 @@ public class Centinela : GenerarObstaculos
     {
         if (other.tag == "Player")
         {
+            audioSource.clip = alarmSound;
+            audioSource.Play();
             playerVisible = true;
             player = other.gameObject;
         }

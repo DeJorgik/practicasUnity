@@ -12,6 +12,7 @@ public class GenerarObstaculos : MonoBehaviour
     public bool spawnOnStart = true;       // Should it start spawning right away?
 
     protected float timer;
+    protected AudioSource audioSource;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class GenerarObstaculos : MonoBehaviour
         {
             SpawnObject(); // Spawn the first object immediately if needed.
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,6 +32,8 @@ public class GenerarObstaculos : MonoBehaviour
 
         if (timer <= 0f)
         {
+            //Hacer Sonido
+            audioSource.Play();
             SpawnObject();
             timer = timeBetweenSpawns; // Reset the timer
         }
