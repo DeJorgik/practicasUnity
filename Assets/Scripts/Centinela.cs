@@ -60,6 +60,10 @@ public class Centinela : GenerarObstaculos
         {
             playerVisible = false;
             player = null;
+            if (audioSource.clip == alarmSound){
+                audioSource.Stop();
+            }
+
         }
     }
 
