@@ -10,6 +10,6 @@ public class FInalTarget : MonoBehaviour
     {
         EventManager.TriggerPlayerOutcome(GameConstants.gameResult.Victory);
         // //ganar partida
-        // SceneManager.LoadScene(0);
+        //Reproducir sonido
     }
 }
