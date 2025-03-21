@@ -7,12 +7,12 @@ using UnityStandardAssets.Utility;
 
 
 public class GameManager : MonoBehaviour {
-    [SerializeField] private InitialPos respawnZone;
+    [SerializeField] private GameObject respawnZone;
     [SerializeField] private GameObject playerPrefab;
 
     private GameObject playerInstance;
     private playerScript player;
-    private GameObject respawn;
+    private InitialPos respawn;
 
     private bool isGuiOn;
     
@@ -35,28 +35,34 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         isGuiOn = false;
-        
-        // Nos suscribimos a los eventos
+
         EventManager.OnPlayerOutcome += playerOutcome;
         EventManager.OnPlayerdeath += updateLife;
         EventManager.OnPlayerRespawn += respawnPlayer;
-        
-        // Escenas
 
         SceneManager.sceneLoaded += OnLoadedScene;
 
+        
+        
+        if (respawnZone != null) {
+            respawn = respawnZone.GetComponent<InitialPos>();
+            Debug.Log("El spawn es null");
+        }
 
+        if (respawn == null) {
+            Debug.Log("El script de respawn es null");
+        }
+        
         if (playerInstance == null) {
-            playerInstance = Instantiate(playerPrefab, new Vector3(10,10,10), Quaternion.identity);
+            playerInstance = Instantiate(playerPrefab, respawn.getPos(), Quaternion.identity);
+            if (playerInstance != null) {
+                player = playerInstance.GetComponent<playerScript>();
+            }
         }
 
-        if (playerInstance != null && player == null) {
-            player = playerInstance.GetComponent<playerScript>();
-        }
-
-        respawnZone.respawn();
         GuiManager.Instance.hideGameOver();
     }
+
 
     private void loadNextScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -68,9 +74,15 @@ public class GameManager : MonoBehaviour {
         isGuiOn = false;
         GuiManager.Instance.hideGameOver();
         
-        if (respawn == null) {
-            respawn = GameObject.FindGameObjectWithTag("RespawnZone"); // Pillamos el spawn
+        if (respawnZone == null) {
+            respawnZone = GameObject.FindGameObjectWithTag("RespawnZone"); // Pillamos el spawn
+            if (respawnZone != null) {
+                respawn = respawnZone.GetComponent<InitialPos>();
+            }
         }
+        
+        
+        respawnPlayer();
     }
     private void OnDisable() {
         EventManager.OnPlayerOutcome -= playerOutcome;
@@ -113,7 +125,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("HA PERDIDO");
         }
 
-        respawnZone.respawn();
+        respawnPlayer();
     }
 
     private void playerOutcome(GameConstants.gameResult result) {
@@ -125,11 +137,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void respawnPlayer(Vector3 spawnPosition) {
+    public void respawnPlayer() {
         if (player != null) {
-            player.respawnAt(spawnPosition);
-            
-            Debug.Log("Se spawnea en el " + spawnPosition);
+            player.respawnAt(respawn.getPos());
         }
+        
     }
 }

@@ -10,7 +10,7 @@ public class EventManager : MonoBehaviour {
 
     public static event Action loadScene; 
 
-    public static event Action<Vector3> OnPlayerRespawn;
+    public static event Action OnPlayerRespawn;
 
 
     public void TriggerLoadScene()
@@ -36,9 +36,9 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    public static void TriggerPlayerRespawn(Vector3 position) {
+    public static void TriggerPlayerRespawn() {
         if (OnPlayerRespawn != null) {
-            OnPlayerRespawn.Invoke(position);
+            OnPlayerRespawn.Invoke();
         }
     }
 

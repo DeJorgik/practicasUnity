@@ -9,8 +9,12 @@ public class InitialPos : MonoBehaviour {
         spawnPosition = transform.position + new Vector3(0,2,0);
     }
 
+    public Vector3 getPos() {
+        return spawnPosition;
+    }
+
     public void respawn() {
-        EventManager.TriggerPlayerRespawn(spawnPosition);
+        EventManager.TriggerPlayerRespawn();
         Debug.Log("Se ha spawneado en el " + spawnPosition);
     }
 }
