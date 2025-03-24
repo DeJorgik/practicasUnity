@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeHud : MonoBehaviour {
     [SerializeField] private GameObject lifePrefab; // Lo que vamos a meter
@@ -11,6 +12,8 @@ public class LifeHud : MonoBehaviour {
     [SerializeField] private int lifeNumber;
     [SerializeField] private Sprite sprite;
     [SerializeField] private float spacing;
+
+    [SerializeField] private Button exitButton;
 
     private int currentLifeNumber;
     private List<GameObject> lifeList;
@@ -24,6 +27,8 @@ public class LifeHud : MonoBehaviour {
         counter = 0;
         Debug.Log("VIDAS ACTUALES -> " + currentLifeNumber);
         Debug.Log("TAM LIST -> " + lifeList.Count);
+        
+        exitButton.onClick.AddListener(GameManager.Instance.Exit);
     }
 
     public void resetLifeHud() {

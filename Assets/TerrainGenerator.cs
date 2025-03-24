@@ -3,23 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class terrainGenerator : MonoBehaviour
 {
-    public int depth = 20;
-
-    public int width = 256;
-    public int height = 256;
-
-
-    public float scale = 20f;
+    [SerializeField] private int depth = 20;
+    [SerializeField] private int width = 256;
+    [SerializeField] private int height = 256;
+    [SerializeField] private float scale = 20f;
+    
 
     private void Start()
     {
         Terrain terrain = GetComponent<Terrain>();
-
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
-
     }
 
     private TerrainData GenerateTerrain(TerrainData terrainData)
@@ -45,8 +42,7 @@ public class terrainGenerator : MonoBehaviour
 
         return heights;
     }
-
-
+    
     float CalculateHeight(int x, int y)
     {
         float xCoord = (float)x / width * scale;

@@ -26,7 +26,6 @@ public class Centinela : GenerarObstaculos
     {
         if (playerVisible)
         {
-
             transform.LookAt(player.transform.position);
             timer -= Time.deltaTime;
 
@@ -63,11 +62,10 @@ public class Centinela : GenerarObstaculos
             if (audioSource.clip == alarmSound){
                 audioSource.Stop();
             }
-
         }
     }
 
-    //Sobrecarga del método
+    //Sobrecarga del mï¿½todo
     new void SpawnObject()
     {
         if (objectToInstantiate != null)

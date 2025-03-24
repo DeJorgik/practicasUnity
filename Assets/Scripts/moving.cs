@@ -10,9 +10,15 @@ public class moving : MonoBehaviour
     public float speed;
     public bool direction;
 
+
+    [SerializeField] private ParticleSystem particles;
     // Start is called before the first frame update
-    void Start()
-    {
+    
+    void Start() {
+        if (particles == null) {
+            Debug.Log("Problemon");
+        }
+        
         max_distance = max_distance + distance;
         min_distance = min_distance - distance;
     }
@@ -32,6 +38,12 @@ public class moving : MonoBehaviour
         if (transform.position.x >= max_distance || transform.position.x <= min_distance)
         {
             direction = !direction;
+
+            if (particles != null) {
+                Debug.Log("Estamos haciendo cosas");
+                ParticleSystem.ShapeModule shape = particles.shape;
+                shape.rotation = new Vector3(0, direction ? 270 : 90, 0);
+            }
         }
     }
 }

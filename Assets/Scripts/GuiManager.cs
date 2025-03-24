@@ -8,6 +8,15 @@ public class GuiManager : MonoBehaviour {
     public static GuiManager Instance { get; private set; }
 
 
+    [SerializeField] private GameObject gameOverPrefab;
+    [SerializeField] private GameObject lifePrefab;
+    
+    private GameObject gameOverObject;
+    private GameObject lifeHudObject;
+    
+    private GameOverGui gameOverGui;
+    private LifeHud lifeHud;
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -15,11 +24,23 @@ public class GuiManager : MonoBehaviour {
         }
 
         Instance = this;
+
+        gameOverObject = Instantiate(gameOverPrefab, Vector3.zero, Quaternion.identity);
+        lifeHudObject = Instantiate(lifePrefab, Vector3.zero, Quaternion.identity);
+
+
+        gameOverGui = gameOverObject.GetComponent<GameOverGui>();
+        lifeHud = lifeHudObject.GetComponent<LifeHud>();
+        
+        DontDestroyOnLoad(gameOverObject);
+        DontDestroyOnLoad(lifeHudObject);
+        
+        DontDestroyOnLoad(this);
     }
 
 
-    [SerializeField] private GameOverGui gameOverGui;
-    [SerializeField] private LifeHud lifeHud;
+    // Los conseguimos una vez y permanecen para el resto de la ejecucion
+    
     
 
     public void hideGameOver() {

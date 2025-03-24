@@ -9,11 +9,18 @@ public class EventManager : MonoBehaviour {
     public static event Action<GameConstants.gameResult> OnPlayerOutcome;
 
     public static event Action<Vector3> OnPlayerRespawn;
+    public static event Action<bool> OnGamePause;
 
 
     public static void TriggerPlayerDeath() {
         if (OnPlayerdeath != null) {
             OnPlayerdeath.Invoke();
+        }
+    }
+
+    public static void TriggerGamePause(bool isPaused) {
+        if (OnGamePause != null) {
+            OnGamePause.Invoke(isPaused);
         }
     }
     

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8343931563110725438}
   - component: {fileID: 8486180148602365360}
   - component: {fileID: 451097633654293145}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3777078398185021485}
   - component: {fileID: 6213243377602135251}
   - component: {fileID: 3029165021960045357}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 556172458755399636}
   - component: {fileID: 7472958615960773443}
   - component: {fileID: 5306685684254216180}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyingSentry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToInstantiate: {fileID: 560137768808875838, guid: 4f1391afd2e876745a3a623b5ac2d774, type: 3}
-  timeBetweenSpawns: 2
+  timeBetweenSpawns: 4
   initialSpeed: {x: 0, y: 0, z: 0}
   initialRotation: {x: 0, y: 0, z: 0}
   spawnOnStart: 1
@@ -516,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9170900189940604668}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: canonpos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 3940545984680491726}
   - component: {fileID: 1654789287110356901}
   - component: {fileID: 2250742870235453716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 7014178513124843263}
   - component: {fileID: 6097603251060731387}
   - component: {fileID: 7764358638507633834}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
