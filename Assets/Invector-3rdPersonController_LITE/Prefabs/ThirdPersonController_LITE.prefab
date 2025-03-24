@@ -353,13 +353,13 @@ MonoBehaviour:
   rotateByWorld: 0
   useContinuousSprint: 1
   sprintOnlyFree: 1
-  locomotionType: 2
+  locomotionType: 0
   freeSpeed:
     movementSmooth: 6
     animationSmooth: 0.2
     rotationSpeed: 16
     walkByDefault: 0
-    rotateWithCamera: 0
+    rotateWithCamera: 1
     walkSpeed: 10
     runningSpeed: 10
     sprintSpeed: 10
